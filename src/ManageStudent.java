@@ -4,9 +4,9 @@ Student[] students = new Student[3];
 Scanner scanner = new Scanner(System.in);
 
 ManageStudent(){
-    students[0] = new Student(1,"John",15);
-    students[1] = new Student(2,"Nick",12);
-    students[2] = new Student(3,"Tim",18);
+    students[0] = new Student("John",15);
+    students[1] = new Student("Nick",12);
+    students[2] = new Student("Tim",18);
 }
 
 public void show(){
@@ -21,7 +21,7 @@ public void add(){
     String name = scanner.nextLine();
     System.out.println("Nhap tuoi");
     int age = Integer.parseInt(scanner.nextLine());
-    Student student = new Student(id,name,age);
+    Student student = new Student(name,age);
     Student [] student1 = new Student[students.length + 1];
     student1[student1.length - 1] = student;
     for (int i = 0; i < students.length; i++){
@@ -29,24 +29,41 @@ public void add(){
     }
     students = student1;
 }
-public void edit(){
-    System.out.println("Nhap id can sua");
-    int id = Integer.parseInt(scanner.nextLine());
-    System.out.println("Nhap ten sinh vien can sua");
-    String name = scanner.nextLine();
-    System.out.println("Nhap lai tuoi");
-    int age = Integer.parseInt(scanner.nextLine());
-    Student  student2 = new Student(id,name,age);
-    for (int i = 0; i < students.length; i++) {
-        if (students[i].getId() == student2.getId()) {
-            students[i].setName(student2.getName());
-            students[i].setAge(student2.getAge());
-            break;
+//public void edit(){
+//    System.out.println("Nhap id can sua");
+//    int id = Integer.parseInt(scanner.nextLine());
+//    System.out.println("Nhap ten sinh vien can sua");
+//    String name = scanner.nextLine();
+//    System.out.println("Nhap lai tuoi");
+//    int age = Integer.parseInt(scanner.nextLine());
+//    Student  student2 = new Student(id,name,age);
+//    for (int i = 0; i < students.length; i++) {
+//        if (students[i].getId() == student2.getId()) {
+//            students[i].setName(student2.getName());
+//            students[i].setAge(student2.getAge());
+//            break;
+//        }
+//        else
+//            System.err.println("     Error");
+//    }
+//}
+
+    public void edit(){
+        System.out.println("Nhập id cần sửa");
+       int id = Integer.parseInt(scanner.nextLine());
+        for(Student student: students){
+            if(student.getId() == id){
+            System.out.println("Nhập tên muốn sửa");
+            String name = scanner.nextLine();
+            System.out.println("Nhập tuổi: ");
+            int age = Integer.parseInt(scanner.nextLine());
+            student.setName(name);
+            student.setAge(age);
+            return;
+            }
         }
-        else
-            System.err.println("     Error");
+        System.err.println("Không tìm thấy id cần sửa");
     }
-}
 
 
     public void delete() {

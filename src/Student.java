@@ -1,11 +1,12 @@
 
 public class Student {
+    private static int count = 1;
     private int id;
     private String name;
     private int age;
 
-    public Student(int id, String name, int age) {
-        this.id = id;
+    public Student( String name, int age) {
+        this.id = count++;
         this.name = name;
         this.age = age;
     }
